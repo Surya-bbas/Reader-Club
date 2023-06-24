@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import {onAuthStateChanged} from 'firebase/auth';
 import { auth } from './firebaseConfig';
 
-const URL = "http://openlibrary.org/search.json?title=";
+const URL = "https://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
 
 
