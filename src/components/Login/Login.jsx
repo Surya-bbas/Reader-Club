@@ -19,9 +19,7 @@ import {
 import {
   doc,
   setDoc,
-  getDoc,
-  updateDoc,
-  arrayUnion
+  
 } from 'firebase/firestore'
 
 const Login = () => {

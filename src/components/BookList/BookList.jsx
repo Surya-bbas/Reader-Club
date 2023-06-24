@@ -35,7 +35,7 @@ const BookList = () => {
         <div className='booklist-content grid'>
           {
             // Rendering Book components for each book in the booksWithCovers array, limiting to 30 books
-            booksWithCovers.slice(0, 30).map((item, index) => {
+            booksWithCovers.map((item, index) => {
               return (
                 <Book key={index} {...item} />
               )

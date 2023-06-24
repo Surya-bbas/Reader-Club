@@ -1,7 +1,14 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { useCallback } from 'react';
 import {onAuthStateChanged} from 'firebase/auth';
-import { auth } from './firebaseConfig';
+import { auth , db } from './firebaseConfig';
+import {
+    doc,
+    setDoc,
+    getDoc,
+    updateDoc,
+    arrayUnion
+} from 'firebase/firestore'
 
 const URL = "https://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
@@ -13,6 +20,22 @@ const AppProvider = ({children}) => {
     const [loading, setLoading] = useState(true);
     const [resultTitle, setResultTitle] = useState("");
     const [currentUser, setCurrentUser] = useState(null);
+    const [addtocar, setAddtocar] = useState('')
+    console.log('cart',addtocar);
+
+    useEffect(() => {
+      if (addtocar!==""){
+        if(currentUser!==null){
+            updateDoc(doc(db,'user',currentUser.uid),{
+                cart:arrayUnion(addtocar)
+            })
+        }
+
+      }
+      
+      
+    }, [addtocar])
+    
 
     useEffect(() => {
         // Listener for authentication state changes
@@ -80,7 +103,7 @@ const AppProvider = ({children}) => {
 
     return (
         <AppContext.Provider value = {{
-            loading, books, setSearchTerm, resultTitle, setResultTitle,currentUser
+            loading, books, setSearchTerm, resultTitle, setResultTitle,currentUser,addtocar,setAddtocar
         }}>
             {children}
         </AppContext.Provider>

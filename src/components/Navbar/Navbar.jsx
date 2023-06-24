@@ -8,6 +8,7 @@ import {signOut} from 'firebase/auth'
 import {auth} from '../../firebaseConfig'
 import { Avatar } from '@mui/material';
 import {useNavigate} from 'react-router-dom'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -48,6 +49,7 @@ const Navbar = () => {
                     }
                   </div>
                 </li>
+                  
                 <button>
                   <li className='nav-item nav-link text-uppercase text-white fs-22 fw-6 ls-1' onClick={()=>{
                     signOut(auth).then(()=>navigate('/'))

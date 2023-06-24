@@ -19,8 +19,8 @@ const Header = () => {
                   </p>
                </div>
                <div className="flex-1 flex flex-col text-center home-page-right">
-                  <h2 className="header-title text-capitalize text-purple-600 ">
-                     find your book of choice.
+                  <h2 className="header-title text-capitalize text-purple-600 mb-10 p-5">
+                     Search For the Book You Are Looking For
                   </h2>
                   <SearchForm />
                </div>

@@ -11,6 +11,7 @@ import BookList from "./components/BookList/BookList";
 import BookDetails from "./components/BookDetails/BookDetails";
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/Login/SignUp';
+import Cart from './components/Cart/Cart';
 
 
 
@@ -25,6 +26,8 @@ root.render(
         </Route>
         <Route path = "login" element = {<Login />} />
         <Route path = 'signup' element={<SignUp />} />
+        <Route path = 'cart' element={<Cart />} />
+        
       </Routes>
     </BrowserRouter>
   </AppProvider>
