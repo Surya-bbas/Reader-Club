@@ -12,3 +12,14 @@
     opacity: 0.8;
     max-width: 770px;
 }
+
+@media screen and (max-width:630px) {
+    .header-content{
+        display: none;
+    }
+    .home-page-right{
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
+    }
+}

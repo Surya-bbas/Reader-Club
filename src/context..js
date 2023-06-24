@@ -1,15 +1,41 @@
 import React, {useState, useContext, useEffect} from 'react';
 import { useCallback } from 'react';
+import {onAuthStateChanged} from 'firebase/auth';
+import { auth } from './firebaseConfig';
+
 const URL = "http://openlibrary.org/search.json?title=";
 const AppContext = React.createContext();
+
 
 const AppProvider = ({children}) => {
     const [searchTerm, setSearchTerm] = useState("the lost world");
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [resultTitle, setResultTitle] = useState("");
+    const [currentUser, setCurrentUser] = useState(null);
+
+    useEffect(() => {
+        // Listener for authentication state changes
+        const unsubscribe = onAuthStateChanged(auth,(user) => {
+        if (user) {
+            // User is logged in
+            setCurrentUser(user);
+            console.log(currentUser);
+        } else {
+            // User is logged out
+            setCurrentUser(null);
+            console.log(currentUser);
+        }
+        });
+    
+    
+    }, []);
+    
 
     const fetchBooks = useCallback(async() => {
+
+        
+
         setLoading(true);
         try{
             const response = await fetch(`${URL}${searchTerm}`);
@@ -54,7 +80,7 @@ const AppProvider = ({children}) => {
 
     return (
         <AppContext.Provider value = {{
-            loading, books, setSearchTerm, resultTitle, setResultTitle,
+            loading, books, setSearchTerm, resultTitle, setResultTitle,currentUser
         }}>
             {children}
         </AppContext.Provider>

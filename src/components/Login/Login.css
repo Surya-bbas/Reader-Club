@@ -1,0 +1,45 @@
+.login-container{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;    
+}
+.login-container-img{
+    height: 100%;
+    background-image: url("../../images/home\ img.jpg") ;   
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+}
+.login-container-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-formL{
+    width: 100%;
+    max-width: 680px;
+}
+.search-form-elemL{
+    padding: 1.4rem 2.8rem;
+    border-radius: 3.8rem;
+    width: 420px;
+}
+.search-form-elemL .form-controlL{  
+    padding: 0.6rem;
+    width: 420px;
+}
+.search-form-elemL .form-controlL::placeholder{
+    opacity: 0.9;
+}
+
+@media screen and (max-width:470px) {
+    .search-form-elemL{
+        width: 300px;
+    }
+    .search-form-elemL .form-controlL{
+    
+        padding: 0.6rem;
+        width: 300px;
+    }
+}
