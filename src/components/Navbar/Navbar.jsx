@@ -6,11 +6,15 @@ import {HiOutlineMenuAlt3} from "react-icons/hi";
 import {useGlobalContext} from '../../context.'
 import {signOut} from 'firebase/auth'
 import {auth} from '../../firebaseConfig'
+import { Avatar } from '@mui/material';
+import {useNavigate} from 'react-router-dom'
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const handleNavbar = () => setToggleMenu(!toggleMenu);
   const {currentUser} = useGlobalContext()
+  const navigate = useNavigate()
+  console.log('photo',currentUser?.photoURL);
 
   return (
     <nav className='navbar' id = "navbar">
@@ -28,18 +32,30 @@ const Navbar = () => {
         </div>
 
         <div className={toggleMenu ? "navbar-collapse show-navbar-collapse" : "navbar-collapse"}>
-          <ul className = "navbar-nav">
-            <li className='nav-item'>
-              <Link to = "book" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Home</Link>
-            </li>
+          <ul className = "navbar-nav ">
             {currentUser ?
-              <button>
-                <li className='nav-item nav-link text-uppercase text-white fs-22 fw-6 ls-1' onClick={()=>{
-                  signOut(auth).then((response)=>console.log(response))
-                }}>
-                  LogOut
+              <>
+                <li className='nav-item nav-link text-uppercase text-white fs-22 fw-6 ls-1 space-x-10 flex flex-row  hover:text-[#000!important]'>
+                  <p><span className='text-purple-600 pr-3'> Welcome </span>  {currentUser?.email}</p>
+
+                  <div className='nav-avatar hidden'>
+                    { (currentUser?.photoURL)== null ? 
+
+                        <Avatar alt={currentUser?.email} src />
+                      :
+                        <Avatar alt={currentUser?.email} src={currentUser?.photoURL} />
+
+                    }
+                  </div>
                 </li>
-              </button>
+                <button>
+                  <li className='nav-item nav-link text-uppercase text-white fs-22 fw-6 ls-1' onClick={()=>{
+                    signOut(auth).then(()=>navigate('/'))
+                  }}>
+                    LogOut
+                  </li>
+                </button>
+              </>
               
             :
 

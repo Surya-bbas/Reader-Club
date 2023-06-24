@@ -62,7 +62,7 @@ const Signup = () => {
             
 
                 <div className='filter-none '>
-                    <p>{email}  {password}</p>
+                    
                     <p className='text-neutral-300 text-center text-4xl font-bold'>Sign Up Now !</p>
                     <div className='search-form-elemL flex flex-sb bg-white my-24 '>
                         <input type = "text" className='form-controlL text-black ' placeholder='Enter Mail ID' value={email} onChange={(e)=>setEmail(e.target.value)} />                            

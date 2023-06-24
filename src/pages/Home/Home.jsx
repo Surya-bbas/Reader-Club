@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <main>        
-        <p>{currentUser && currentUser.email}</p>
+        
         <Header />
         <Outlet />
     </main>

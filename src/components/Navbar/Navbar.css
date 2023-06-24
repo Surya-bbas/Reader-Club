@@ -78,6 +78,9 @@
     .navbar-nav{
         display: flex;
     }
+    .nav-avatar{
+        display: block;
+    }
 }
 
 @media screen and (max-width: 560px){
